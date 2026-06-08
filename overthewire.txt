@@ -1,0 +1,65 @@
+ssh bandit0@bandit.labs.overthewire.org -p 2220
+ls
+cat readme
+ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+
+ssh bandit1@bandit.labs.overthewire.org -p 2220
+ls
+cat ./-
+-> 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+
+ssh bandit2@bandit.labs.overthewire.org -p 2220
+ls
+cat "./--spaces in this filename--"
+-> MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+
+
+ssh bandit3@bandit.labs.overthewire.org -p 2220
+ls -a
+cd inhere
+ls -a
+cat "...Hiding-From-You"
+-> 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+
+
+ssh bandit4@bandit.labs.overthewire.org -p 2220
+ls
+cd inhere
+ls
+for f in ./*; do
+  echo "----- $f -----"
+  cat "$f"
+  echo
+done
+-> 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+
+$ find . -type f -size 1033c -readable
+./maybehere07/.file2
+$ stat ./maybehere07/.file2
+  File: ./maybehere07/.file2
+  Size: 1033      	Blocks: 8          IO Block: 4096   regular file
+Device: 259,1	Inode: 332364      Links: 1
+Access: (0640/-rw-r-----)  Uid: (    0/    root)   Gid: (11005/ bandit5)
+Access: 2026-06-07 17:39:52.443280782 +0000
+Modify: 2026-04-03 15:18:06.512327357 +0000
+Change: 2026-04-03 15:18:06.518635857 +0000
+ Birth: 2026-04-03 15:18:06.512304551 +0000
+bandit5@bandit:~$ cat ./maybehere07/.file2
+->  HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
+     
+ bandit6@bandit:~$ find . -type f -size 33c -group bandit6 -user bandit7 -exec cat  {} + 2>/dev/null
+morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+
+
+bandit7@bandit:~$ grep -i millionth data.txt
+millionth	dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+
+bandit8@bandit:~$ cat data.txt | sort | uniq -u
+4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+
+bandit9@bandit:~$ strings data.txt | grep -E "={2,}"
+ ========== the
+========== password
+========== is
+========== FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+
