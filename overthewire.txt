@@ -63,3 +63,37 @@ bandit9@bandit:~$ strings data.txt | grep -E "={2,}"
 ========== is
 ========== FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
 
+bandit10@bandit:~$ cat data.txt 
+VGhlIHBhc3N3b3JkIGlzIGR0UjE3M2ZaS2IwUlJzREZTR3NnMlJXbnBOVmozcVJyCg==
+bandit10@bandit:~$ cat data.txt | base64 --decode
+The password is dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+
+bandit11@bandit:~$ cat data.txt | tr 'A-MN-Za-mn-z' 'N-ZA-Mn-za-m'
+The password is 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+
+
+mktemp -d
+
+cp ~/password /tmp/tmp.xxxxxx/
+cd /tmp/tmp.xxxxxx/
+
+file password
+hexdump -C password | head
+
+xxd -r -p password > password.bin
+file password.bin
+
+gzip -dc password.bin > out.gz
+file out.gz
+
+bzip2 -d file.bz2
+
+tar -xf file.tar
+tar -xvzf file.tar.gz
+
+gzip -dc data8.bin > data9
+file data9
+bandit12@bandit:/tmp/tmp.3eBBQLC5ev$ cat data9
+The password is FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
+
+bandit13@bandit:~$ cat the key
